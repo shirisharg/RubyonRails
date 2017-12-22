@@ -1,0 +1,28 @@
+<h1>Employee Details</h1>
+
+<table>
+	<tr> 
+		<td>Name:</td>
+		<td><%= @employee[:name] %></td>
+	</tr>
+	<tr>
+		<td>Project:</td>
+		<td><%= @project[:name] %></td>
+	</tr>
+	<tr>
+		<td> Team Lead:</td>
+		<% begin %>
+		<% lead = Employee.find(@employee.employee_id) %>
+			<td><%= lead[:name] %></td>
+		<% rescue %>
+		<td> None </td>
+		<% end %>
+	</tr>
+
+	<tr>
+		<td> Skills: </td>
+		<% @employee.skills.each do |skill| %>
+			<td><%= skill[:name] %></td>
+		<% end %>
+	</tr>
+</table>

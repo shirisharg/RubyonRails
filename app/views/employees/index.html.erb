@@ -1,0 +1,19 @@
+
+<h1>Employees</h1>
+ 
+<table>
+  <tr>
+    <th>Names: </th>
+  </tr>
+
+ 
+  <% @employee.each do |e| %>
+    <tr>
+      <td> <%= link_to e[:name], employee_path(:id => e[:id]) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Add Employee', new_employee_path %> <br>
+<%= link_to 'Add Project', new_project_path %> <br>
+<%= link_to 'Add Skill', new_skill_path %> <br>

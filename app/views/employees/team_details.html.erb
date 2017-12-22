@@ -1,0 +1,17 @@
+<table>
+	<tr>
+		<td>Employee </td>
+		<td>Skills Count</td>
+	</tr>
+<% @employee.each do |emp| %>
+<tr>
+	<td>
+	<%= emp.name %>
+</td>
+<td>
+	<%= emp.skill_count%>
+</tr>
+
+<% end%>
+
+</table>

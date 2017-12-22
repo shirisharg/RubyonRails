@@ -1,0 +1,38 @@
+
+<%= form_with model: @employee, url: {action: "create"}, local: true do |form| %>
+ 
+  <% if @employee.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@employee.errors.count, "error") %> prohibited
+        this employee details from being saved:
+      </h2>
+      <ul>
+        <% @employee.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+    <%= form.label :project %>
+<%= collection_select(:employee, :project_id, Project.all, :id, :name) %>
+
+  <p> 
+    <%= form.label :employee %>
+    <%= collection_select(:employee, :employee_id, Employee.all, :id, :name) %>
+  </p>
+
+  <p>
+    <%= form.label :skills %>
+  <%= collection_select(:employee, :skills, Skill.all, :id, :name, {}, { :multiple => true}) %>
+
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>
